@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        main {
+            width: 27.6%;
+            height: 50.6vh;
+            background-color: rgba(255, 0, 0, 0.753);
+            margin-left: 35%;
+            margin-top: 10%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .whole {
+            margin: 0;
+            padding: 0;
+            gap: 0px;
+            padding-top: 20px;
+        }
+
+        button {
+            width: 90px;
+            padding: 10px;
+            font-size: 17px;
+            background-color: black;
+            color: white;
+        }
+
+        #ods {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <input id="displayall" type="text">
+    <div id="screen"></div>
+    <div id="secondnumber"></div>
+
+    <div id="whole">
+        <!-- Number buttons -->
+        <button onclick="displayNum(9)">9</button>
+        <button onclick="displayNum(8)">8</button>
+        <button onclick="displayNum(7)">7</button>
+        <button onclick="displayNum(6)">6</button>
+        <button onclick="displayNum(5)">5</button>
+        <button onclick="displayNum(4)">4</button>
+        <button onclick="displayNum(3)">3</button>
+        <button onclick="displayNum(2)">2</button>
+        <button onclick="displayNum(1)">1</button>
+        <button onclick="displayNum(0)">0</button>
+        
+        <!-- Operator buttons -->
+        <button class="operator" onclick="appendOperator('%')">%</button>
+        <button class="operator" onclick="appendOperator('/')">/</button>
+        <button class="operator" onclick="appendOperator('*')">x*</button>
+        <button class="operator" onclick="appendOperator('1/x')">1/x</button>
+
+        <button class="operator" onclick="clearEntry()">CE</button>
+        <button class="operator" onclick="clearAll()">C</button>
+        <button class="operator" onclick="appendOperator('^')">^</button>
+        <button class="operator" onclick="appendOperator('+')">+</button>
+
+        <!-- Other buttons -->
+        <button style="font-size: 15px;" onclick="backspace()">Backspace</button>
+        <button onclick="appendNumber('.')">.</button>
+        <button onclick="calculate()">=</button>
+    </div>
+</main>
+
+<script>
+    let displayall = document.getElementById("displayall");
+    let firstnumber = "";
+    let secondnumber = "";
+    let operator = "";
+
+    function displayNum(a) {
+        displayall.value += a;
+    }
+
+    function appendOperator(opt) {
+        operator = opt;
+        firstnumber = displayall.value;
+        displayall.value = "";
+    }
+
+    function clearEntry() {
+        displayall.value = "";
+    }
+
+    function clearAll() {
+        displayall.value = "";
+        firstnumber = "";
+        secondnumber = "";
+        operator = "";
+    }
+
+    function backspace() {
+        displayall.value = displayall.value.slice(0, -1);
+    }
+
+    function calculate() {
+        secondnumber = displayall.value;
+        if (operator === "+") {
+            displayall.value = parseFloat(firstnumber) + parseFloat(secondnumber);
+        } else if (operator === "-") {
+            displayall.value = parseFloat(firstnumber) - parseFloat(secondnumber);
+        } else if (operator === "*") {
+            displayall.value = parseFloat(firstnumber) * parseFloat(secondnumber);
+        } else if (operator === "/") {
+            if (parseFloat(secondnumber) === 0) {
+                displayall.value = "Error";
+            } else {
+                displayall.value = parseFloat(firstnumber) / parseFloat(secondnumber);
+            }
+        } else if (operator === "%") {
+            displayall.value = parseFloat(firstnumber) % parseFloat(secondnumber);
+        } else if (operator === "^") {
+            displayall.value = Math.pow(parseFloat(firstnumber), parseFloat(secondnumber));
+        }
+    }
+</script>
+</body>
+</html>

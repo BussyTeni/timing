@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main{
+            width: 27.6%;
+            height: 50.6vh;
+            background-color: rgba(255, 0, 0, 0.753);
+            margin-left: 35%;
+            margin-top: 10%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+            
+        }
+        
+        .whole{
+            margin: 0;
+            padding: 0;
+            gap: 0px;
+            padding-top: 20px;
+        }
+        
+         button{
+            width: 90px;
+            padding: 10px;
+            font-size: 17px;
+            background-color: black;
+            color: white;
+        
+            
+        }
+        #ods{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        
+      
+        <input id="displayall" type="text" >
+            <div id="screen"></div>
+            <div id="secondnumber"></div>
+        
+
+
+        <div id="whole">
+        
+            <button id="operator" >%</button>
+            <button id="operator">\</button>
+            <button  id="operator">x*</button>
+            <button  id="operator">1/x</button>
+        
+            <button  id="operator">CE</button>
+            <button  id="operator">C</button>
+            <button  id="operator">^</button>
+            <button  id="operator">/</button>
+        
+            <button onclick="displayNum(9)">9</button>
+            <button onclick="displayNum(8)">8</button>
+            <button onclick="displayNum(7)">7</button>
+            <button id="operator" onclick="displayNum(`*`)">*</button>
+        
+            <button onclick="displayNum(6)">6</button>
+            <button onclick="displayNum(5)">5</button>
+            <button onclick="displayNum(4)">4</button>
+            <button id="operator" onclick="displayNum(`-`)">-</button>
+    
+            <button onclick="displayNum(3)">3</button>
+            <button onclick="displayNum(2)">2</button>
+            <button onclick="displayNum(1)">1</button>
+            <button id="operator" onclick="operator('+')">+</button>
+        
+            <button style="font-size: 15px;">Backspace</button>
+            <button onclick="displayNum(0)">0</button>
+            <button>.</button>
+            <button onclick="equal()">=</button>
+    
+        </div>
+    
+    </main>
+
+    <script>
+       let screen = document.getElementById("screen");
+       let displayall = document.getElementById("displayall");
+       let first_number = "";
+        let second_number = "";
+        let getoperator = ""
+
+    
+      function displayNum(a){
+        displayall.value += a
+    }
+        
+        function operator(opt){
+            getoperator = opt;
+        firstnumber = displayall.value;
+        displayall.value = "";
+ 
+        
+           
+        }
+        
+        function equal(){
+            secondnumber = displayall.value;
+        if (operator === "+") {
+            displayall.value = parseFloat(firstnumber) + parseFloat(secondnumber);
+        } else if (operator === "-") {
+            displayall.value = parseFloat(firstnumber) - parseFloat(secondnumber);
+        } else if (operator === "*") {
+            displayall.value = parseFloat(firstnumber) * parseFloat(secondnumber);
+        }
+              
+        }
+
+    </script>                          
+    
+    <!-- <main>
+        
+        
+      
+        <button id="ods" type="text" name="display"></button>
+
+        <div id="whole">
+        
+            <button id="operator" onclick="displayNum(`%`)">%</button>
+            <button id="operator" onclick="displayNum(`\`)">\</button>
+            <button>x*</button>
+            <button>1/x</button>
+        
+            <button>CE</button>
+            <button>C</button>
+            <button>^</button>
+            <button>/</button>
+        
+            <button onclick="displayNum(9)">9</button>
+            <button onclick="displayNum(8)">8</button>
+            <button onclick="displayNum(7)">7</button>
+            <button id="operator" onclick="displayNum(`*`)">*</button>
+        
+            <button onclick="displayNum(6)">6</button>
+            <button onclick="displayNum(5)">5</button>
+            <button onclick="displayNum(4)">4</button>
+            <button id="operator" onclick="displayNum(`-`)">-</button>
+    
+            <button onclick="displayNum(3)">3</button>
+            <button onclick="displayNum(2)">2</button>
+            <button onclick="displayNum(1)">1</button>
+            <button id="operator" onclick="displayNum(`+`)">+</button>
+        
+            <button style="font-size: 15px;">Backspace</button>
+            <button onclick="displayNum(0)">0</button>
+            <button>.</button>
+            <button onclick="displayNum(=)">=</button>
+    
+        </div>
+    
+    </main> -->
+</body>
+
+
+</html>

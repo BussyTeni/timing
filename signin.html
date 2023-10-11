@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #whole input{
+           padding: 10px;
+           width: 90%;
+           margin-top: 10px;
+           height: 25px;
+           border-radius: 5px;
+           border: 1px solid rgb(119,119,119);
+
+        }
+        #whole{
+            margin-top: 8%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 30%;
+            height: 40vh;
+            background-color: burlywood;
+            border-radius: 8px;
+
+        }
+        #whole button{
+            margin-top: 10px;
+            padding: 15px;
+            border: 0;
+            color: white;
+            font-size: 20px;
+            border-radius: 10px;
+            width: 35%;
+            background-color: rgba(255, 105, 113, 0.877);
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div id="whole">
+            <h2 style="color: rgba(255, 105, 113, 0.877);">Sign In</h2>
+            <input type="email" placeholder="Email" id="email"> <br>
+            <input type="password" placeholder="Password" id="password"><br><br>
+            <button onclick="editBtn()">Edit</button>
+            <button onclick="submit()">Submit</button>
+        </div>
+     <h2 id="screen"></h2>
+    </center>
+    <script>
+        let email = document.getElementById("email") 
+        let password = document.getElementById("password")
+        let screen = document.getElementById("screen")
+
+        const submit = () => {
+        
+        let storedArray  = localStorage.getItem("nameArray");
+        let parsedArr = JSON.parse(storedArray);
+       for (let i = 0; i < parsedArr.length; i++) {
+        console.log(parsedArr)
+        let emailkey = parsedArr[i].email;
+        let passwordkey = parsedArr[i].password;
+        
+        if(parsedArr[i].Email === email.value  && parsedArr[i].Password === password.value ){
+           screen.innerHTML = `Sign in successfully `
+        }else{
+            screen.innerHTML = `Error! credentials do not match ` 
+        }
+        
+       }
+        }
+
+        const editBtn = (i) => {
+        let storedArray = localStorage.getItem("nameArray");
+        let parsedArr = JSON.parse(storedArray);
+        for (let i = 0; i < parsedArr.length; i++) {
+            let email = prompt("Enter new email", parsedArr[i].email);
+        let password = prompt("Enter new password", parsedArr[i].password);
+        
+        let newObj = {
+            email,
+            password
+            
+        }  
+        parsedArr.splice(i, 1, newObj);
+        localStorage.setItem("nameArray", JSON.stringify(parsedArr));
+        
+            
+        }
+       
+
+        // parsedArr[i] = newObj;
+        //OR
+       
+    }
+
+        
+       
+    </script>
+</body>
+</html>

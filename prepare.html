@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            width: 25%;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+        <input type="text" id="username" placeholder="Username"> <br><br>
+        <input type="email" id="email" placeholder="email"> <br><br>
+        <input type="password" id="password" placeholder="password"> <br> <br>
+        <input type="password" id="c_pass" placeholder="password"> <br> <br>
+
+        <input type="text" id="phonenumber" placeholder="phone number"> <br> <br>
+        <input type="text" id="firstname">
+        <button onclick="register(event)" >Register</button>
+    
+</body>
+<script>
+    nameArr = []
+    let username = document.getElementById("username");
+    let firstname = document.getElementById("firstname");
+    let phonenumber = document.getElementById("phonenumber");
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let c_pass = document.getElementById("c_pass");
+    
+
+    function register(ev){
+        console.log(ev.target);
+        ev.target.style.backgroundColor = "green";
+        ev.preventDefault();
+        
+        
+        let nameObj = {
+            username: username.value,
+            email : email.value,
+            password: password.value,
+            phonenumber : phonenumber.value,
+            c_pass: c_pass.value 
+        }
+        if (username.value == "" || email.value =="" || password.value =="" ) {
+            alert("Input fields cannot be empty")
+        }else if (password.value.length < 8){
+                alert ("password cannot be less than 8 characters")
+            }else if(password.value != c_pass.value){
+                alert("password does not match")
+            }else{
+                alert("Registration successful")
+                nameArr.push(nameObj)
+                console.log(nameArr)
+                localStorage.setItem("nameArr", JSON.stringify(nameArr));
+                window.location.href = "login.html"
+        }
+        
+        
+        
+    }
+             function showHide(){
+                if (password == "text") {
+                    password == "password"
+                }else{
+                    password == "text"
+                }
+             }
+
+
+
+</script>
+</html>

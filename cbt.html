@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            width: 70px;
+            height: 30px;
+            border: 0;
+            background-color: hotpink;
+            padding: 5px;
+            font-size: 16px;
+        }
+        .pre{
+            width: 70px;
+            height: 30px;
+            border: 0;
+            margin-left: 20%;
+            padding: 5px; 
+            background-color: hotpink;
+            font-size: 16px;
+
+            
+
+            
+        }
+    </style>
+</head>
+<body>
+      <div id="last"></div>
+     <div>
+        <button onclick="pre()">previous</button> 
+        <button class="pre" onclick="next()">next</button>
+     </div>
+</body>
+<script>
+    let last = document.getElementById("last")
+    let lastindex = 0;
+    let cbtObj = [
+        {
+            que: "what is your name?",
+            a: "Red", 
+            b: "blue", 
+            c: "white",
+            d: "black"
+        },
+        {
+            que: "what is your color?",
+            a:"Red", 
+            b: "blue", 
+            c: "white",
+            d: "black"
+        },
+        {
+            que: "what is your collll?",
+            a: "Red", 
+            b: "blue", 
+            c: "white",
+            d:"black"
+        },
+        {
+            que: "what is your loop?",
+            a: "Red", 
+            b:"blue", 
+            c: "white",
+            d: "black"
+        },
+    ]
+
+    
+        let p = document.createElement("p")
+        p.innerHTML = `${cbtObj[lastindex].que} <br> <br>  ${cbtObj[lastindex].a} <br>  ${cbtObj[lastindex].b} <br>  ${cbtObj[lastindex].c} <br>  ${cbtObj[lastindex].d}` ;
+        last.appendChild(p);
+        
+        // console.log(h1);
+        // last.innerHTML = cbtObj[que]
+
+        function next() {
+            
+            if (lastindex === cbtObj.length-1){
+                lastindex
+                last.innerHTML = `
+                <p> ${lastindex+1}. ${cbtObj[lastindex].que} <br /> ${cbtObj[lastindex].a} <br /> ${cbtObj[lastindex].b} <br /> ${cbtObj[lastindex].c} <br /> ${cbtObj[lastindex].d} <br />
+                    
+                </p>
+                `
+            }else{
+                lastindex++
+                last.innerHTML = `
+                     <p> ${lastindex+1}. ${cbtObj[lastindex].que} <br /> ${cbtObj[lastindex].a} <br /> ${cbtObj[lastindex].b} <br /> ${cbtObj[lastindex].c} <br /> ${cbtObj[lastindex].d} <br />
+                    
+                    </p>
+
+                `
+            }
+
+            
+
+        }
+        function pre(){
+            if (lastindex === 0){
+            lastindex
+            last.innerHTML = `
+            <p> ${lastindex+1}. ${cbtObj[lastindex].que} <br /> ${cbtObj[lastindex].a} <br /> ${cbtObj[lastindex].b} <br /> ${cbtObj[lastindex].c} <br /> ${cbtObj[lastindex].d} <br />
+                    
+                </p>
+            `
+        }else{
+            lastindex--
+            last.innerHTML = `
+            <p> ${lastindex+1}. ${cbtObj[lastindex].que} <br /> ${cbtObj[lastindex].a} <br /> ${cbtObj[lastindex].b} <br /> ${cbtObj[lastindex].c} <br /> ${cbtObj[lastindex].d} <br />
+                    
+            </p>
+            `
+             }
+        }
+
+    
+
+    
+    
+</script>
+</html>

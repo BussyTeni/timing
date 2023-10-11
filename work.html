@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <button onclick="Sub()">-</button> 
+   <span id="number"></span>
+   <button onclick="Add()">+</button>
+   <button onclick="stop()">stop</button>
+
+</body>
+<script>
+         let clear = null;
+       let index = 0;
+      number.innerHTML = index;
+      
+       function Sub() {
+
+    //     if (index == 0) {
+    //         return
+    //     }else{ 
+    //         index --;  
+    //         number.innerHTML = index;
+    //     }
+    clearInterval(clear)
+      clear = setInterval(() => {
+        index --;
+        number.innerHTML = index;
+        if (index == 0) {
+           clearInterval(clear) 
+        }
+      }, 1000);
+        
+       }
+       function Add() {
+            
+    //         index ++ ;
+    //         number.innerHTML = index;
+    clearInterval(clear)
+    clear = setInterval(() => {
+        index ++;
+        number.innerHTML = index;
+        if (index == 10) {
+            clearInterval(clear)
+        }
+      }, 1000);
+
+            
+        
+       } 
+       function stop() {
+        
+          clearInterval(clear)
+       }
+
+    
+
+      
+</script>
+</html>

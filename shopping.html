@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+      #productlist {
+        display: flex;
+        flex-direction: row; 
+        gap: 20px;
+       }
+
+   
+       .product-item {
+        background-color: white;
+        box-shadow: 2px 2px 5px #888888;
+        padding: 10px;
+        border-radius: 5px;
+       }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Shopping List</h1>
+        <input type="text" id="input1" placeholder="Shopping item"><br>
+        <input type="text" id="input2" placeholder="Price"><br>
+        <input type="text" id="input3" placeholder="Quantity"><br>
+        <button onclick="multiply()">Submit</button>
+        <h1 id="totalall">Total:</h1>
+        <div id="productlist"></div>
+    </div>
+
+    <script>
+       let productName = document.getElementById("input1");
+       let productPrice = document.getElementById("input2");
+       let productQuantity = document.getElementById("input3");
+       let productlist = document.getElementById("productlist");
+       let total = 0;
+       let busayo = 0;
+       let totalall = document.getElementById("totalall");
+
+       const multiply = () => {
+         total = productPrice.value * productQuantity.value;
+         busayo += total;
+         console.log(total);
+         totalall.innerHTML = `Total: ${busayo}`;
+
+         const productDiv = document.createElement("div");
+         productDiv.classList.add("product-item"); 
+
+         const nameText = document.createElement("h5");
+         nameText.textContent = "Product Name";
+         const nameId = document.createElement("p");
+         nameId.textContent = productName.value;
+
+         const priceText = document.createElement("h5");
+         priceText.textContent = "Product Price";
+         const priceId = document.createElement("p");
+         priceId.textContent = productPrice.value;
+
+         const quantityText = document.createElement("h5");
+         quantityText.textContent = "Product Quantity"; 
+         const quantityId = document.createElement("p");
+         quantityId.textContent = productQuantity.value;
+
+         const deleteButton = document.createElement("button");
+         deleteButton.textContent = "Delete";
+         deleteButton.onclick = function() {
+           productlist.removeChild(productDiv);
+         };
+
+         productDiv.appendChild(nameText);
+         productDiv.appendChild(nameId);
+         productDiv.appendChild(priceText);
+         productDiv.appendChild(priceId);
+         productDiv.appendChild(quantityText);
+         productDiv.appendChild(quantityId);
+         productDiv.appendChild(deleteButton);
+
+         productlist.appendChild(productDiv);
+
+         console.log(`Product added: ${productName.value}`);
+         
+         productName.value = "";
+         productPrice.value = "";
+         productQuantity.value = "";
+       }
+    </script>
+</body>
+</html>

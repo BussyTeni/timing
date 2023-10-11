@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <h1>Login</h1>
+        <input id="email" type="email" placeholder="email">
+        <input id="password" type="password" placeholder="******">
+        <button onclick="login(event)">Login</button>
+    </form>
+</body>
+<script>
+    let nameArr = localStorage.getItem("nameArr");
+    let derArr = JSON.parse(nameArr);
+    console.log(derArr);
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+
+    function login(ev){
+        ev.preventDefault()
+        let found = derArr.find((el) => el.email == email.value && el.password == password.value);
+        console.log(found);
+        if (found == undefined) {
+            alert("User not found")
+        }else{
+            alert("Login successful")
+            localStorage.setItem("currUser", JSON.stringify(found))
+            window.location.href = "dashboard.html"
+        }
+    }
+</script>
+</html>

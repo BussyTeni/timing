@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #bus{
+            width: 30%;
+            height: 40vh;
+            margin-top: 15%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 5px;
+
+            
+        }
+        #car, #lap{
+            height: 40px;
+            outline: none;
+        }
+        button{
+            border: 0;
+            padding: 10px;
+            border-radius: 4px;
+            background-color: pink;
+
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div id="bus">
+            <h1>Grading list</h1>
+            <input id="car" type="text" placeholder="Enter your score"> <br><br>
+            <input id="lap" type="text"> <br><br>
+            <button onclick="submit()">Submit</button>
+            <p id="all"></p>
+        </div>
+    </center>
+    
+</body>
+<script>
+        
+        
+        function submit (){
+             let car = document.getElementById ("car").value
+            if(car <= 40){
+            document.getElementById("lap").value = "Failed"
+            
+            }else if ( car > 40 && car <= 60 ){
+            document.getElementById("lap").value  = "passed"
+        
+
+            }else{
+                document.getElementById("lap").value = "excellent"
+        
+
+            }
+        }
+
+        
+
+
+
+    // let userInput = prompt ("Enter a Number:");
+    // let number = parseInt(userInput)
+    // let ttt = number % 2;
+    // if ( ttt ==0){
+    //     alert("the number is even")
+    // }
+    // else{
+    //     alert("the number is odd")
+    // }
+
+</script>
+</html>

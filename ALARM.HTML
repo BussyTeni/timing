@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <div id="display"></div>
+</body>
+<script>
+    let currentTime = new Date()
+    let hours = currentTime.getHours()
+    let minutes = currentTime.getMinutes()
+    let seconds = currentTime.getSeconds()
+    let clear = null;
+     
+    let display = document.getElementById("display")
+    display.innerHTML = `${hours} : ${minutes} : ${seconds}`
+
+
+    clear = setInterval(() => {
+          seconds++
+          display.innerHTML = `${hours} : ${minutes} : ${seconds}`
+
+          if (seconds == 60) {
+            clearInterval(seconds)
+            seconds = 0;
+            minutes++;
+          }
+    }, 1000);
+
+    if (minutes ==  59) {
+            clearInterval(minutes)
+            minutes = 0;
+            hours++;
+          }
+    ;
+
+    console.log(hours)
+
+
+
+</script>
+</html>

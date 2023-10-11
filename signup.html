@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      #whole input{
+          padding: 15px;
+          width: 90%;
+          margin-top: 10px;
+          height: 25px;
+           border-radius: 5px;
+           border: 1px solid rgb(119,119,119);
+
+      }
+      #whole{
+        margin-top: 5%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        width: 30%;
+        height: 80vh;
+        background-color: burlywood;
+        border-radius: 8px;
+      }
+      #whole button{
+            margin-top: 10px;
+            padding: 15px;
+            border: 0;
+            color: white;
+            font-size: 20px;
+            border-radius: 10px;
+            width: 35%;
+            background-color: rgba(255, 105, 113, 0.877);
+        }
+    </style>
+</head>
+<body>
+
+    <center>
+        <div id="whole">
+            <h2 style="color: rgba(255, 105, 113, 0.877);">Sign Up</h2>
+            <input type="text" placeholder="First Name" id="Firstname"> <br>
+            <input type="text" placeholder="Second Name" id="Secondname"> <br>
+            <input type="email" placeholder="Email" id="Email"> <br>
+            <input type="password" placeholder="Password" id="Password"> <br>
+            <input type="text" placeholder="Phone Number" id="Phonenumber"> <br><br>
+            <button onclick="submit()">Submit</button> <br><br>
+            <a href="C:\Users\HP\Desktop\Javascript\signin.html" style="font-size: 20px;">Sign In</a>
+
+    
+        </div>
+    </center>
+    <script>
+        localStorage.clear();
+        let nameArr = []
+        let Firstname = document.getElementById("Firstname"); 
+        let Secondname = document.getElementById("Secondname");
+        let Email = document.getElementById("Email"); 
+        let Password = document.getElementById("Password"); 
+        let Phonenumber = document.getElementById("Phonenumber");
+        
+        if (localStorage.getItem("nameArray") === null) {
+            localStorage.setItem("nameArray", "[]")
+        }
+        
+        const submit = () => {
+            
+        let firstname = Firstname.value;
+        let secondname = Secondname.value;
+        let email = Email.value;
+        let password = Password.value;
+        let phonenumber = Phonenumber.value;
+
+        let nameObj = {
+            Firstname: firstname,
+            Secondname: secondname,
+            Email: email ,
+            Password: password,
+            Phonenumber:phonenumber
+        }
+        let storedArray = localStorage.getItem("nameArray");
+        let parsedArr = JSON.parse(storedArray);
+        nameArr = [...parsedArr, nameObj];
+        localStorage.setItem("nameArray", JSON.stringify(nameArr));
+        console.log(submit)
+    }
+
+
+    </script> 
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number"  id="first">
+    <button onclick="press()">press</button>
+    <div id="new"></div>
+
+</body>
+<script>
+    let firste = document.getElementById("first")
+    let index = 0;
+    let dis;
+    
+    function press(){
+        index = firste.value
+       dis = setInterval(() => {
+            index--;
+            document.getElementById("new").innerHTML = index;
+            if (index == 0) {
+              clearInterval(dis)  
+            }
+       }, 1000);
+
+    }
+</script>
+</html>
